@@ -16,6 +16,7 @@ export default function Loader({ onComplete }: LoaderProps) {
   // ✅ Rule 2 — refs, never class selectors
   const containerRef = useRef<HTMLDivElement>(null);
   const lineRef = useRef<HTMLDivElement>(null);
+  const bloomGroupRef = useRef<HTMLDivElement>(null);
   const dotRef = useRef<HTMLDivElement>(null);
   const petalsRef = useRef<(HTMLDivElement | null)[]>([]);
 
@@ -103,16 +104,16 @@ export default function Loader({ onComplete }: LoaderProps) {
         "-=0.28",
       );
 
-      // STEP 4 — whole loader fades out
+      // STEP 4 — dissolve the full loader (no upward motion)
       tl.to(
         containerRef.current,
         {
           opacity: 0,
-          duration: 0.7,
-          ease: "power2.inOut",
+          duration: 0.65,
+          ease: "sine.inOut",
         },
-        "+=0.3",
-      ); // 0.3s pause to admire the flower
+        "+=0.12",
+      );
     },
     { scope: containerRef },
   ); // ✅ scope locks all queries to this container
@@ -120,105 +121,114 @@ export default function Loader({ onComplete }: LoaderProps) {
   return (
     <div
       ref={containerRef}
-      className="z-50 fixed inset-0 flex justify-center items-center bg-[#0d1f10]"
+      className="z-50 fixed inset-0 bg-[#0d1f10] overflow-hidden"
     >
-      {/* The vertical line — starts at center, grows down */}
       <div
-        className="absolute flex flex-col items-center"
-        style={{ top: "12%", bottom: "50%" }}
+        className="absolute inset-0 flex justify-center items-center bg-[#0d1f10]"
+        style={{
+          borderBottomLeftRadius: "58% 34%",
+          borderBottomRightRadius: "58% 34%",
+          transformOrigin: "center bottom",
+        }}
       >
+        {/* The vertical line — starts at center, grows down */}
         <div
-          ref={lineRef}
-          className="bg-linear-to-b from-transparent via-[#c9a227]/60 to-[#c9a227] w-px"
-          style={{ height: "100%" }}
-        />
-      </div>
+          className="absolute flex flex-col items-center"
+          style={{ top: "12%", bottom: "50%" }}
+        >
+          <div
+            ref={lineRef}
+            className="bg-linear-to-b from-transparent via-[#c9a227]/60 to-[#c9a227] w-px"
+            style={{ height: "100%" }}
+          />
+        </div>
 
-      {/* Center point — dot + petals all anchored here */}
-      <div className="relative flex justify-center items-center w-36 h-36">
+        {/* Center point — dot + petals all anchored here */}
         <div
-          className="absolute rounded-full"
-          style={{
-            width: "120px",
-            height: "120px",
-            background:
-              "radial-gradient(circle, rgba(116, 173, 119, 0.2) 0%, rgba(13, 31, 16, 0) 72%)",
-            filter: "blur(2px)",
-          }}
-        />
+          ref={bloomGroupRef}
+          className="z-10 relative flex justify-center items-center w-36 h-36"
+        >
+          <div
+            className="absolute rounded-full"
+            style={{
+              width: "104px",
+              height: "104px",
+              background:
+                "radial-gradient(circle, rgba(116, 173, 119, 0.2) 0%, rgba(13, 31, 16, 0) 72%)",
+              filter: "blur(2px)",
+            }}
+          />
 
-        {/* Petals — each rotated evenly around 360° */}
-        {Array.from({ length: PETAL_COUNT }).map((_, i) => {
-          const angle = (i / PETAL_COUNT) * 360; // 0, 45, 90, 135...
-          const petalHeight = i % 2 === 0 ? 58 : 52;
-          const petalWidth = i % 3 === 0 ? 18 : 16;
-          const tilt = i % 2 === 0 ? -4 : 3;
-          return (
-            <div
-              key={i}
-              ref={(el) => {
-                petalsRef.current[i] = el;
-              }}
-              className="top-1/2 left-1/2 absolute w-0 h-0"
-              style={{
-                transform: `translate(-50%, -50%) rotate(${angle}deg)`,
-                transformOrigin: "center center",
-              }}
-            >
-              {/* Each petal — elongated ellipse pointing outward */}
+          {/* Petals — each rotated evenly around 360° */}
+          {Array.from({ length: PETAL_COUNT }).map((_, i) => {
+            const angle = (i / PETAL_COUNT) * 360;
+            const petalHeight = i % 2 === 0 ? 58 : 52;
+            const petalWidth = i % 3 === 0 ? 18 : 16;
+            const tilt = i % 2 === 0 ? -4 : 3;
+
+            return (
               <div
-                className="top-1/2 left-1/2 absolute shadow-[0_4px_12px_rgba(0,0,0,0.28)] border border-[#9db58a]/40 overflow-hidden"
+                key={i}
+                ref={(el) => {
+                  petalsRef.current[i] = el;
+                }}
+                className="top-1/2 left-1/2 absolute w-0 h-0"
                 style={{
-                  width: `${petalWidth}px`,
-                  height: `${petalHeight}px`,
-                  borderRadius: "55% 55% 46% 46% / 92% 92% 24% 24%",
-                  clipPath:
-                    "polygon(50% 0%, 88% 16%, 100% 45%, 86% 78%, 50% 100%, 14% 78%, 0% 45%, 12% 16%)",
-                  background:
-                    "linear-gradient(180deg, #9bc08a 0%, #65875c 42%, #355137 100%)",
-                  transformOrigin: "center bottom",
-                  transform: `translate(-50%, -100%) rotate(${tilt}deg)`,
+                  transform: `translate(-50%, -50%) rotate(${angle}deg)`,
+                  transformOrigin: "center center",
                 }}
               >
                 <div
-                  className="top-[7%] left-1/2 absolute rounded-full -translate-x-1/2"
+                  className="top-1/2 left-1/2 absolute shadow-[0_4px_12px_rgba(0,0,0,0.28)] border border-[#9db58a]/40 rounded-[55%_55%_46%_46%/92%_92%_24%_24%] overflow-hidden"
                   style={{
-                    width: "2px",
-                    height: "80%",
+                    width: `${petalWidth}px`,
+                    height: `${petalHeight}px`,
+                    clipPath:
+                      "polygon(50% 0%, 88% 16%, 100% 45%, 86% 78%, 50% 100%, 14% 78%, 0% 45%, 12% 16%)",
                     background:
-                      "linear-gradient(180deg, rgba(243, 252, 236, 0.88) 0%, rgba(178, 211, 163, 0.15) 100%)",
+                      "linear-gradient(180deg, #9bc08a 0%, #65875c 42%, #355137 100%)",
+                    transformOrigin: "center bottom",
+                    transform: `translate(-50%, -100%) rotate(${tilt}deg)`,
                   }}
-                />
-                <div
-                  className="top-[18%] left-[18%] absolute rounded-full"
-                  style={{
-                    width: "56%",
-                    height: "34%",
-                    background: "rgba(228, 245, 218, 0.24)",
-                    filter: "blur(2px)",
-                    transform: "rotate(-18deg)",
-                  }}
-                />
-                <div
-                  className="bottom-[10%] absolute inset-x-[10%] rounded-full"
-                  style={{
-                    height: "20%",
-                    background: "rgba(34, 61, 38, 0.38)",
-                    filter: "blur(2px)",
-                  }}
-                />
+                >
+                  <div
+                    className="top-[7%] left-1/2 absolute rounded-full -translate-x-1/2"
+                    style={{
+                      width: "2px",
+                      height: "80%",
+                      background:
+                        "linear-gradient(180deg, rgba(243, 252, 236, 0.88) 0%, rgba(178, 211, 163, 0.15) 100%)",
+                    }}
+                  />
+                  <div
+                    className="top-[18%] left-[18%] absolute rounded-full"
+                    style={{
+                      width: "56%",
+                      height: "34%",
+                      background: "rgba(228, 245, 218, 0.24)",
+                      filter: "blur(2px)",
+                      transform: "rotate(-18deg)",
+                    }}
+                  />
+                  <div
+                    className="bottom-[10%] absolute inset-x-[10%] rounded-full"
+                    style={{
+                      height: "20%",
+                      background: "rgba(34, 61, 38, 0.38)",
+                      filter: "blur(2px)",
+                    }}
+                  />
+                </div>
               </div>
-            </div>
-          );
-        })}
+            );
+          })}
 
-        {/* Gold center dot — renders on top of petals */}
-        <div
-          ref={dotRef}
-          className="z-10 relative bg-[#c9a227] rounded-full w-3 h-3"
-        >
-          {/* Inner white highlight */}
-          <div className="absolute inset-1 bg-[#e8d5b0]/60 rounded-full" />
+          <div
+            ref={dotRef}
+            className="z-10 relative bg-[#c9a227] rounded-full w-3 h-3"
+          >
+            <div className="absolute inset-1 bg-[#e8d5b0]/60 rounded-full" />
+          </div>
         </div>
       </div>
     </div>
