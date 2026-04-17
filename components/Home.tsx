@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import { greatVibes } from "./font";
+import { greatVibes } from "../lib/font";
 import { useGSAP } from "@gsap/react";
 import { useRef } from "react";
 import gsap from "gsap";

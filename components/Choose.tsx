@@ -2,8 +2,6 @@ import { greatVibes } from "@/lib/font";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 
-import Scene from "./ripple";
-
 export default function Choose() {
   return (
     <>
