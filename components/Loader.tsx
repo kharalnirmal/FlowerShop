@@ -103,17 +103,6 @@ export default function Loader({ onComplete }: LoaderProps) {
         },
         "-=0.28",
       );
-
-      // STEP 4 — dissolve the full loader (no upward motion)
-      tl.to(
-        containerRef.current,
-        {
-          opacity: 0,
-          duration: 0.65,
-          ease: "sine.inOut",
-        },
-        "+=0.12",
-      );
     },
     { scope: containerRef },
   ); // ✅ scope locks all queries to this container
