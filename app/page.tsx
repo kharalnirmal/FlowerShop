@@ -1,10 +1,10 @@
 "use client";
 
+import Choose from "@/components/Choose";
 import Home from "@/components/Home";
 import Loader from "@/components/Loader";
 import { AnimatedNavFramer } from "@/components/Navbar";
 
-import Image from "next/image";
 import { useState } from "react";
 
 export default function HomePage() {
@@ -15,8 +15,9 @@ export default function HomePage() {
     <>
       <AnimatedNavFramer />
 
-      <main className="bg-black overflow-hidden">
+      <main className="overflow-hidden">
         <Home />
+        <Choose />
       </main>
     </>
   );
