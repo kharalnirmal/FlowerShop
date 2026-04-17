@@ -1,36 +1,42 @@
-"use client";
+import { AnimatedNavFramer } from "@/components/Navbar";
 
-import Loader from "@/components/Loader";
-import { useState } from "react";
-
-export default function Home() {
-  const [loading, setloading] = useState(true);
-
+export default function HomePage() {
   return (
-    <div className="relative bg-[#eef4ea] min-h-screen overflow-hidden">
-      <div
-        aria-hidden={loading}
-        className={`z-0 relative flex min-h-screen flex-col items-center justify-center px-6 py-10 text-center transition-[opacity,transform,filter] duration-700 ease-out ${
-          loading
-            ? "pointer-events-none select-none opacity-0 scale-[1.02] blur-[2px]"
-            : "pointer-events-auto opacity-100 scale-100 blur-0"
-        }`}
-      >
-        <h1 className="mb-4 font-bold text-[#17311c] text-4xl sm:text-6xl">
-          Welcome to My App
-        </h1>
-        <p className="mb-8 max-w-xl text-[#4f6352] text-lg">
-          This is a sample Next.js application.
-        </p>
-        <button
-          onClick={() => setloading(true)}
-          className="bg-[#17311c] hover:bg-[#224528] px-5 py-3 rounded-full font-medium text-white text-sm transition"
-        >
-          Show Loader
-        </button>
-      </div>
+    <>
+      <AnimatedNavFramer />
+      <main className="mx-auto px-4 pt-24 container">
+        <section className="items-center gap-8 grid md:grid-cols-2 min-h-[85vh]">
+          <div>
+            <h1 className="font-bold text-4xl md:text-left text-center">
+              Navigation with Framer Motion
+            </h1>
+            <p className="mt-4 text-muted-foreground md:text-left text-center">
+              Scroll down to see the magic. Click the collapsed circle to expand
+              the navigation.
+            </p>
+          </div>
+          <img
+            src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=1600&q=80"
+            alt="Blooming flowers in sunlight"
+            className="shadow rounded-xl w-full h-80 object-cover"
+          />
+        </section>
 
-      {loading ? <Loader onComplete={() => setloading(false)} /> : null}
-    </div>
+        <section className="gap-6 grid md:grid-cols-2 bg-muted p-8 rounded-lg h-[160vh]">
+          <div>
+            <h2 className="font-bold text-2xl">Page Content</h2>
+            <p className="mt-4">
+              This animation is powered by Framer Motion, providing a fluid,
+              physics-based feel while preserving a clean interactive shell.
+            </p>
+          </div>
+          <img
+            src="https://images.unsplash.com/photo-1468327768560-75b778cbb551?auto=format&fit=crop&w=1400&q=80"
+            alt="Field of flowers"
+            className="self-start shadow rounded-xl w-full h-80 object-cover"
+          />
+        </section>
+      </main>
+    </>
   );
 }
