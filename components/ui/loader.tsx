@@ -139,7 +139,7 @@ export default function LOGO() {
   }, []);
 
   return (
-    <div className="flex justify-center items-center bg-white min-h-screen text-white">
+    <div className="flex justify-center items-center bg-transparent min-h-screen text-white">
       <svg
         viewBox="0 0 100 100"
         className="drop-shadow-[0_0_6px_rgba(0,0,0,0.55)] w-25 h-50"
