@@ -1,1 +1,23 @@
 @import "tailwindcss";
+@import "tailwindcss";
+
+:root {
+  --forest-900: #0d1f10;
+  --forest-800: #1a2e1e;
+  --forest-700: #243328;
+  --forest-600: #2d4a32;
+  --forest-400: #4a6e4e;
+  --forest-200: #7a9e7e;
+  --gold: #c9a227;
+  --cream: #e8d5b0;
+}
+@theme {
+  --color-primary: var(--forest-400);
+  --color-secondary: var(--gold);
+  --color-background: var(--forest-800);
+}
+
+body {
+  background-color: var(--forest-800);
+  color: var(--cream);
+}

@@ -25,7 +25,7 @@ export default function Choose() {
         <div className={cn("lg:pr-8 w-2/3")}>
           <h1
             className={cn(
-              "m-3 font-extrabold text-amber-400 text-4xl",
+              "my-4 font-extrabold text-amber-400 text-5xl",
               greatVibes.className,
               "antialiased",
             )}
