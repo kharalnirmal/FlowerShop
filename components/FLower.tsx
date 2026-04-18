@@ -140,7 +140,8 @@ export default function FlowerGallery() {
        * We want to move LEFT so we use negative.
        */
       const track = trackRef.current!;
-      const totalScroll = -(track.scrollWidth - window.innerWidth);
+      const getScrollDistance = () =>
+        Math.max(track.scrollWidth - window.innerWidth, 0);
 
       /**
        * ── STEP 2: THE HORIZONTAL SCROLL TWEEN ────────────────
@@ -168,7 +169,7 @@ export default function FlowerGallery() {
        * This feels natural because scroll IS the control mechanism.
        */
       const horizontalTween = gsap.to(track, {
-        x: totalScroll,
+        x: () => -getScrollDistance(),
         ease: "none",
 
         /**
@@ -229,7 +230,8 @@ export default function FlowerGallery() {
            * It's not "end after 3 seconds" — it's "end after 3000px of scroll"
            * This is why scrub feels so natural — it's tied to real scroll distance.
            */
-          end: () => "+=" + track.scrollWidth,
+          end: () =>
+            "+=" + Math.max(getScrollDistance(), window.innerHeight * 0.9),
 
           /**
            * pin: true
@@ -340,7 +342,9 @@ export default function FlowerGallery() {
         scrollTrigger: {
           trigger: sectionRef.current,
           start: "top top",
-          end: () => "+=" + track.scrollWidth * 0.4,
+          end: () =>
+            "+=" +
+            Math.max(getScrollDistance() * 0.4, window.innerHeight * 0.25),
           scrub: 2,
         },
       });
@@ -434,13 +438,13 @@ export default function FlowerGallery() {
     <section
       id="gallery"
       ref={sectionRef}
-      className="relative flex flex-col justify-center bg-forest-900 min-h-screen overflow-hidden"
+      className="relative flex flex-col justify-start bg-forest-900 min-h-[100svh] overflow-hidden"
       style={{ backgroundColor: "#0d1f10" }}
     >
       {/* ── HEADING ─────────────────────────────────────── */}
       <div
         ref={headingRef}
-        className="z-10 relative flex flex-col gap-3 mx-auto mb-12 px-8 md:px-16 lg:w-6xl"
+        className="z-10 relative flex flex-col gap-3 mx-auto mb-8 sm:mb-12 px-4 sm:px-8 md:px-16 pt-14 sm:pt-16 w-full max-w-6xl"
       >
         {/* Label */}
         <span
@@ -488,8 +492,8 @@ export default function FlowerGallery() {
        */}
       <div
         ref={trackRef}
-        className="flex items-center gap-6 md:gap-8 px-8 md:px-16 w-max"
-        style={{ paddingRight: "8rem" }} // extra right padding for last card
+        className="flex items-center gap-5 sm:gap-6 md:gap-8 px-4 sm:px-8 md:px-16 w-max"
+        style={{ paddingRight: "clamp(2rem, 10vw, 8rem)" }} // extra right padding for last card
       >
         {flowers.map((flower, index) => (
           /**
@@ -519,8 +523,8 @@ export default function FlowerGallery() {
             <div
               className="relative overflow-hidden"
               style={{
-                width: "clamp(240px, 28vw, 340px)",
-                height: "clamp(320px, 42vw, 480px)",
+                width: "clamp(200px, 60vw, 340px)",
+                height: "clamp(280px, 82vw, 480px)",
                 backgroundColor: "#1a2e1e",
                 borderRadius: "12px",
                 border: "0.5px solid #2d4a32",

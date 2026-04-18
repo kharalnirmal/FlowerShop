@@ -313,10 +313,10 @@ export default function Footer() {
 
       {/* ── MAIN CONTENT ──────────────────────────────────── */}
       <div
-        className="z-10 relative mx-auto px-8 md:px-16 max-w-7xl"
+        className="z-10 relative mx-auto px-4 sm:px-6 md:px-16 max-w-7xl"
         style={{ paddingTop: "3.5rem", paddingBottom: "5rem" }}
       >
-        <div className="items-end gap-12 md:gap-8 grid grid-cols-1 md:grid-cols-3">
+        <div className="items-end gap-10 md:gap-8 grid grid-cols-1 md:grid-cols-3">
           {/* ── LEFT: BRAND ─────────────────────────────── */}
           <div ref={brandRef} className="flex flex-col gap-4">
             {/* Eyebrow label */}
@@ -330,7 +330,7 @@ export default function Footer() {
             {/* Brand name */}
             <h2
               className={cn(
-                "text-7xl leading-none ,",
+                "text-5xl sm:text-6xl lg:text-7xl leading-none ,",
                 "antialiased",
                 greatVibes.className,
               )}
@@ -464,8 +464,8 @@ export default function Footer() {
           {/* ── RIGHT: LAMP + BENCH SCENE ───────────────── */}
           <div
             ref={sceneRef}
-            className="relative flex justify-end items-end"
-            style={{ height: "260px" }}
+            className="hidden relative md:flex justify-end items-end"
+            style={{ height: "clamp(200px, 38vw, 260px)" }}
             aria-hidden="true"
           >
             {/* Lamp glow — rendered BEHIND the lamp */}
@@ -474,10 +474,10 @@ export default function Footer() {
               className="absolute"
               style={{
                 // Position glow at the lamp head position
-                top: "10px",
-                right: "62px",
-                width: "120px",
-                height: "120px",
+                top: "clamp(8px, 2vw, 10px)",
+                right: "clamp(28px, 8vw, 62px)",
+                width: "clamp(72px, 22vw, 120px)",
+                height: "clamp(72px, 22vw, 120px)",
                 borderRadius: "50%",
                 background:
                   "radial-gradient(circle, rgba(201,162,39,0.35) 0%, rgba(201,162,39,0.1) 40%, transparent 70%)",
@@ -490,9 +490,9 @@ export default function Footer() {
             <div
               className="bottom-12 absolute"
               style={{
-                right: "20px",
-                width: "180px",
-                height: "60px",
+                right: "clamp(8px, 3vw, 20px)",
+                width: "clamp(110px, 34vw, 180px)",
+                height: "clamp(36px, 12vw, 60px)",
                 borderRadius: "50%",
                 background:
                   "radial-gradient(ellipse, rgba(201,162,39,0.12) 0%, transparent 70%)",
@@ -507,8 +507,8 @@ export default function Footer() {
               Positioned to sit on the "ground" of the scene.
             */}
             <div
-              className="absolute"
-              style={{ bottom: "52px", right: "110px" }}
+              className="absolute scale-75 sm:scale-90 md:scale-100 origin-bottom-right"
+              style={{ bottom: "52px", right: "clamp(56px, 20vw, 110px)" }}
             >
               <svg width="140" height="80" viewBox="0 0 140 80" fill="none">
                 {/* Back legs */}
@@ -659,17 +659,17 @@ export default function Footer() {
               className="absolute"
               style={{
                 bottom: "44px",
-                right: "20px",
-                width: "65px",
-                height: "240px",
+                right: "clamp(8px, 3vw, 20px)",
+                width: "clamp(42px, 12vw, 65px)",
+                height: "clamp(170px, 44vw, 240px)",
                 zIndex: 2,
               }}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 100 400"
-                width="65"
-                height="240"
+                width="100%"
+                height="100%"
                 preserveAspectRatio="xMidYMid meet"
               >
                 <defs>

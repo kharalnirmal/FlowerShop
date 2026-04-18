@@ -18,14 +18,14 @@ export default function HomePage() {
     <>
       <AnimatedNavFramer />
 
-      <main className="relative mx-auto">
+      <main className="relative mx-auto w-full overflow-x-hidden">
         <Home />
         <div
           className={cn(
-            "flex justify-center items-center mx-auto mt-10 lg:mt-20 -mb-10 lg:px-20 lg:w-6xl",
+            "mx-auto mt-10 lg:mt-20 -mb-10 px-4 sm:px-6 lg:px-20 w-full max-w-6xl",
           )}
         >
-          <h1 className="font-extrabold text-gold text-3xl lg:text-7xl">
+          <h1 className="font-extrabold text-gold text-3xl sm:text-4xl md:text-5xl lg:text-7xl text-center leading-tight">
             BOUQUETS FOR THE MOOD{" "}
           </h1>
         </div>
@@ -35,11 +35,11 @@ export default function HomePage() {
         </div>
         <FlowerGallery />
       </main>
-      <div className="relative">
+      <div className="relative overflow-x-hidden">
         <Footer />
         <Image
           className={cn(
-            "-top-[60%] md:right-[-4%] absolute blur-sm w-[100px] sm:w-[200px] md:w-[250px] lg:w-[300px] -rotate-[55deg]",
+            "hidden sm:block -top-[30%] sm:-top-[45%] md:-top-[60%] right-[-16%] sm:right-[-10%] md:right-[-4%] absolute blur-sm w-22.5 sm:w-45 md:w-62.5 lg:w-75 -rotate-55 pointer-events-none select-none",
           )}
           src="/flowers/gallery-1.png"
           alt="Description"
@@ -55,7 +55,7 @@ export function FlowerImage() {
   return (
     <Image
       className={cn(
-        "-top-[50%] -left-[14%] md:-left-[12%] absolute w-[200px] sm:w-[300px] md:w-[400px] lg:w-[500px] h-auto rotate-[55deg]",
+        "hidden sm:block -top-[22%] sm:-top-[32%] md:-top-[50%] -left-[24%] sm:-left-[18%] md:-left-[12%] absolute w-37.5 sm:w-65 md:w-100 lg:w-125 h-auto rotate-55 pointer-events-none select-none",
       )}
       src="/flowers/gallery-1.png"
       alt="Description"

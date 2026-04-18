@@ -19,18 +19,18 @@ export default function Home() {
     <div
       id="home"
       ref={homeRef}
-      className="flex justify-center items-center mx-auto h-[39vh] lg:min-h-screen container"
+      className="flex justify-center items-center mx-auto w-full max-w-[100vw] min-h-[60vh] sm:min-h-[70vh] lg:min-h-screen overflow-x-hidden"
       style={{
         backgroundImage: 'url("/flowers/hero.jpg")',
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
     >
-      <div className="w-5xl h-52 lg:h-[65vh]">
-        <div className="flex justify-center items-center m-8 lg:m-0 border-4 border-white rounded-3xl h-full">
+      <div className="px-4 sm:px-6 lg:px-0 w-full max-w-5xl h-52 sm:h-64 lg:h-[65vh]">
+        <div className="flex justify-center items-center m-4 sm:m-8 lg:m-0 border-4 border-white rounded-3xl h-full">
           <h1
             className={cn(
-              "flex flex-col justify-center items-center w-[60%] h-full font-bold text-white lg:text-[20vh] text-6xl leading-11 lg:leading-25",
+              "flex flex-col justify-center items-center w-[90%] sm:w-[80%] lg:w-[60%] h-full font-bold text-white lg:text-[20vh] text-4xl sm:text-5xl md:text-6xl leading-tight lg:leading-none",
               greatVibes.className,
             )}
           >

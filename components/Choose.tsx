@@ -6,7 +6,7 @@ import { relative } from "path";
 export default function Choose() {
   return (
     <>
-      <svg className="-top-[999px] -left-[999px] absolute w-0 h-0 clipppy">
+      <svg className="-top-249.75 -left-249.75 absolute w-0 h-0 clipppy">
         <defs>
           <clipPath id="clip-goey5" clipPathUnits={"objectBoundingBox"}>
             <path
@@ -21,19 +21,19 @@ export default function Choose() {
       <div
         id="about"
         className={cn(
-          "flex lg:flex-row flex-col justify-center items-center mx-auto mt-20 mb-10 lg:px-20 lg:w-6xl",
+          "flex lg:flex-row flex-col justify-center items-center mx-auto mt-20 mb-10 px-4 sm:px-6 lg:px-20 w-full max-w-6xl",
         )}
       >
-        <div className={cn("lg:pr-8 w-2/3", "relative")}>
+        <div className={cn("relative lg:pr-8 w-full lg:w-2/3")}>
           <h1
             className={cn(
-              "my-4 font-extrabold text-amber-400 text-5xl",
+              "my-4 font-extrabold text-amber-400 text-4xl sm:text-5xl",
               greatVibes.className,
               "antialiased",
             )}
           >
             Why Choose us
-            <div className="lg:bottom-56 lg:-left-10 absolute bg-gradient-to-r from-transparent via-lime-50 to-transparent w-[100%] lg:w-[60%] h-px" />
+            <div className="hidden lg:block lg:bottom-56 lg:-left-10 absolute bg-linear-to-r from-transparent via-lime-50 to-transparent w-full lg:w-[60%] h-px" />
           </h1>
           <p
             className={cn(
@@ -65,7 +65,11 @@ export default function Choose() {
           </p>
         </div>
 
-        <div className={cn("mt-7 lg:ml-20 w-1/3")}>
+        <div
+          className={cn(
+            "flex justify-center lg:justify-start mt-7 lg:ml-20 w-full lg:w-1/3",
+          )}
+        >
           <div className="relative">
             <figure className="hidden lg:block p-8 hover:p-4 rounded-xl transition-all duration-200">
               <div style={{ clipPath: "url(#clip-goey5)" }}>
