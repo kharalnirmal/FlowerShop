@@ -6,7 +6,6 @@ import Loader from "@/components/Loader";
 import { AnimatedNavFramer } from "@/components/Navbar";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
-
 import { useState } from "react";
 
 export default function HomePage() {
@@ -17,7 +16,7 @@ export default function HomePage() {
     <>
       <AnimatedNavFramer />
 
-      <main className="relative overflow-hidden">
+      <main className="relative">
         <Home />
         <div
           className={cn(
@@ -29,7 +28,7 @@ export default function HomePage() {
         <Choose />
         <Image
           className={cn(
-            "top-[50%] -left-[10%] md:-left-[12%] -z-10 absolute w-[200px] sm:w-[300px] md:w-[400px] lg:w-[500px] h-auto rotate-[55deg]",
+            "top-[50%] -left-[10%] md:-left-[12%] absolute w-[200px] sm:w-[300px] md:w-[400px] lg:w-[500px] h-auto rotate-[55deg]",
           )}
           src="/flowers/gallery-1.png"
           alt="Description"

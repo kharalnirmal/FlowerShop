@@ -18,7 +18,12 @@
   /* --color-background: var(--forest-800); */
 }
 
+html,
 body {
-  background-color: var(--forest-800);
+  height: 100%;
+  width: 100%;
+}
+
+body {
   color: var(--cream);
 }
