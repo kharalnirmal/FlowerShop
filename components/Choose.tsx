@@ -1,6 +1,7 @@
 import { greatVibes } from "@/lib/font";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
+import { relative } from "path";
 
 export default function Choose() {
   return (
@@ -18,11 +19,12 @@ export default function Choose() {
         </defs>
       </svg>
       <div
+        id="about"
         className={cn(
-          "flex lg:flex-row flex-col justify-center items-center mx-auto mt-20 lg:px-20 lg:w-6xl",
+          "flex lg:flex-row flex-col justify-center items-center mx-auto mt-20 mb-10 lg:px-20 lg:w-6xl",
         )}
       >
-        <div className={cn("lg:pr-8 w-2/3")}>
+        <div className={cn("lg:pr-8 w-2/3", "relative")}>
           <h1
             className={cn(
               "my-4 font-extrabold text-amber-400 text-5xl",
@@ -31,10 +33,11 @@ export default function Choose() {
             )}
           >
             Why Choose us
+            <div className="lg:bottom-56 lg:-left-10 absolute bg-gradient-to-r from-transparent via-lime-50 to-transparent w-[100%] lg:w-[60%] h-px" />
           </h1>
           <p
             className={cn(
-              "hidden lg:block w-full lg:w-[90%] text-gray-500 leading-5",
+              "hidden lg:block w-full lg:w-[90%] text-white text-lg leading-5",
             )}
           >
             We are a team of passionate individuals dedicated to providing the
@@ -51,7 +54,7 @@ export default function Choose() {
           </p>
           <p
             className={cn(
-              "lg:hidden block w-full lg:w-[90%] text-gray-500 leading-5",
+              "lg:hidden block w-full lg:w-[90%] text-white leading-5",
             )}
           >
             We are a team of passionate individuals dedicated to providing the

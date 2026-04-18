@@ -17,6 +17,7 @@ export default function Home() {
 
   return (
     <div
+      id="home"
       ref={homeRef}
       className="flex justify-center items-center mx-auto h-[39vh] lg:min-h-screen container"
       style={{

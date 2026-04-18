@@ -22,11 +22,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${handlee.className} h-full antialiased`}>
-      <body className="relative w-full">
-        <div
-          className="-z-10 fixed inset-0 pointer-events-none"
-          style={{ zIndex: -1 }}
-        >
+      <body className="relative w-full overflow-x-hidden">
+        <div className="-z-10 fixed inset-0" style={{ zIndex: -1 }}>
           <ShaderGradientCanvas className="w-full h-full">
             <ShaderGradient
               animate="on"

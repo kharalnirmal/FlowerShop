@@ -2,16 +2,19 @@
 
 import * as React from "react";
 import { motion, useMotionValueEvent, useScroll } from "framer-motion";
-import { Menu, Navigation } from "lucide-react";
+import { Home, Menu, Navigation } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 import LOGO from "./ui/loader";
+import Choose from "./Choose";
+import FlowerGallery from "./FLower";
+import Footer from "./Footer";
 
 const navItems = [
-  { name: "Home", href: "#" },
-  { name: "About", href: "#" },
-  { name: "Services", href: "#" },
-  { name: "Contact", href: "#" },
+  { name: "Home", href: "#home" },
+  { name: "About", href: "#about" },
+  { name: "Gallery", href: "#gallery" },
+  { name: "Contact", href: "#contact" },
 ];
 
 const EXPAND_SCROLL_THRESHOLD = 80;
