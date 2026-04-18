@@ -30,7 +30,7 @@ export default function Home() {
         <div className="flex justify-center items-center m-4 sm:m-8 lg:m-0 border-4 border-white rounded-3xl h-full">
           <h1
             className={cn(
-              "flex flex-col justify-center items-center w-[90%] sm:w-[80%] lg:w-[60%] h-full font-bold text-white lg:text-[20vh] text-4xl sm:text-5xl md:text-6xl leading-tight lg:leading-none",
+              "flex flex-col justify-center items-center w-[90%] sm:w-[80%] lg:w-[60%] h-full font-bold text-white lg:text-[20vh] sm:text-5xl text-6xl md:text-6xl leading-[0.6] lg:leading-none",
               greatVibes.className,
             )}
           >

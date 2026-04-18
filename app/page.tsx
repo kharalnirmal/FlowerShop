@@ -39,7 +39,7 @@ export default function HomePage() {
         <Footer />
         <Image
           className={cn(
-            "hidden sm:block -top-[30%] sm:-top-[45%] md:-top-[60%] right-[-16%] sm:right-[-10%] md:right-[-4%] absolute blur-sm w-22.5 sm:w-45 md:w-62.5 lg:w-75 -rotate-55 pointer-events-none select-none",
+            "hidden sm:block -top-[60%] sm:-top-[45%] md:-top-[10%] right-[-16%] sm:right-[-10%] md:right-[-4%] absolute blur-sm w-22.5 sm:w-45 md:w-62.5 lg:w-75 -rotate-55 pointer-events-none select-none",
           )}
           src="/flowers/gallery-1.png"
           alt="Description"
