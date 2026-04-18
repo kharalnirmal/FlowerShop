@@ -24,12 +24,13 @@ export default function RootLayout({
     <html lang="en" className={`${handlee.className} h-full antialiased`}>
       <body className="relative w-full overflow-x-hidden">
         <div className="-z-10 fixed inset-0" style={{ zIndex: -1 }}>
-          <ShaderGradientCanvas className="w-full h-full">
+          <ShaderGradientCanvas
+            className="w-full h-full"
+            pixelDensity={1}
+            fov={45}
+          >
             <ShaderGradient
               animate="on"
-              axesHelper="on"
-              bgColor1="#000000"
-              bgColor2="#000000"
               brightness={1.5}
               cAzimuthAngle={60}
               cDistance={7.1}
@@ -38,16 +39,9 @@ export default function RootLayout({
               color1="#2d4a32"
               color2="#7a9e7e"
               color3="#c9a227"
-              destination="onCanvas"
-              embedMode="off"
               envPreset="dawn"
-              format="gif"
-              fov={45}
-              frameRate={10}
-              gizmoHelper="hide"
               grain="off"
               lightType="3d"
-              pixelDensity={1}
               positionX={0}
               positionY={-0.15}
               positionZ={0}
