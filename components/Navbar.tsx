@@ -149,7 +149,7 @@ export function AnimatedNavFramer() {
               href={item.href}
               variants={itemVariants}
               onClick={(e) => e.stopPropagation()}
-              className="px-2 py-1 font-bold text-l text-muted-foreground text-white hover:text-foreground transition-colors"
+              className="px-2 py-1 font-bold text-l text-white hover:text-foreground transition-colors"
             >
               {item.name}
             </motion.a>

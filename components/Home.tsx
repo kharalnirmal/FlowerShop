@@ -3,6 +3,7 @@ import { greatVibes } from "../lib/font";
 import { useGSAP } from "@gsap/react";
 import { useRef } from "react";
 import gsap from "gsap";
+import Magnet from "./ui/Magnet";
 
 export default function Home() {
   const homeRef = useRef<HTMLDivElement>(null);
@@ -32,8 +33,16 @@ export default function Home() {
               greatVibes.className,
             )}
           >
-            <span className="self-end">Moon</span>
-            <span className="self-start">Blooming</span>
+            <span className="self-end">
+              <Magnet padding={200} disabled={false} magnetStrength={100}>
+                Moon
+              </Magnet>
+            </span>
+            <span className="self-start">
+              <Magnet padding={200} disabled={false} magnetStrength={100}>
+                Blooming
+              </Magnet>
+            </span>
           </h1>
         </div>
       </div>

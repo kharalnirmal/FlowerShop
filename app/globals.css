@@ -13,8 +13,9 @@
 }
 @theme {
   --color-primary: var(--forest-400);
+  --color-tertiary: var(--forest-800);
   --color-secondary: var(--gold);
-  --color-background: var(--forest-800);
+  /* --color-background: var(--forest-800); */
 }
 
 body {
